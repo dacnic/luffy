@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<style >
+    *{
+    margin: 0;
+    padding: 0;
+}
+  .day{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background-color: #2f3430;
+    margin-right: 30px;
+    color: white;
+    font-size: 20px;
+    float: left;
+    line-height: 50px;
+    margin-top: 250px;
+  }
+  .hour{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background-color: #2f3430;
+    margin-right: 30px;
+    color: white;
+    font-size: 20px;
+    float: left;
+    line-height: 50px;
+    margin-top: 250px;
+  }
+  .minute{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background-color: #2f3430;
+    margin-right: 30px;
+    color: white;
+    font-size: 20px;
+    float: left;
+    line-height: 50px;
+    margin-top: 250px;
+  }
+  .second{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background-color: #2f3430;
+    margin-right: 30px;
+    color: white;
+    font-size: 20px; 
+    float: left ;
+    line-height: 50px;
+    margin-top: 250px;
+  }
+  .box{
+    width: 250px;
+    height: 50px;
+    margin-left: 250px; 
+    text-align: center;
+    background-color: white;
+    color: #2f3430;;
+    font-size: 40px; 
+    float: left ;
+    line-height: 50px;
+    margin-top: 250px;
+  }
+  .w{
+    text-align: center;
+    background-color: white;
+    color: #2f3430;;
+    font-size: 40px; 
+    float: left ;
+    line-height: 50px;
+    margin-top: 250px;
+    margin-left: -20px;
+  }
+  
+</style>
+<body >
+    <div>
+        <span class="box ">离开学还剩余</span>
+        <span class="day">1</span>
+        <span class="box1 w">天</span>
+        <span class="hour">2</span>
+        <span class="box2 w">时</span>
+        <span class="minute ">3</span>
+        <span class="box3 w">分</span>
+        <span class="second">4</span>
+        <span class="box4 w">秒</span>
+    </div>
+    <script > 
+      var day=document.querySelector('.day');
+      var hour=document.querySelector('.hour');
+      var minute=document.querySelector('.minute');
+      var second=document.querySelector('.second');
+      var inputtime= + new Date('2021-9-10 12:00:00');
+          countdown();
+          setInterval(countdown,1000);  //开启定时器
+  
+          function countdown(time){
+            var nowtime= + new Date();//返回当前时间毫秒数
+            var times=(inputtime-nowtime)/1000//剩余时间总秒数
+            var d = parseInt(times/60/60/24);//天数
+            d=d<10?'0'+d:d;
+            day.innerHTML=d;
+            var h = parseInt(times/60/60%24);//时
+             h=h<10?'0'+h:h;
+             hour .innerHTML=h;
+            var m = parseInt(times/60%60);//分
+             m=m<10?'0'+m:m;
+             minute.innerHTML=m;
+            var s = parseInt(times%60);//秒数
+             s=s<10?'0'+s:s;
+             second.innerHTML=s; 
+          }   
+          
+      </script>
+   
+</body>
+</html>
