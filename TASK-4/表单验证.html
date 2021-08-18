@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .registerarea{
+        width:700px;
+        height:  500px;
+        background-color: #fff;
+        margin: 40px auto 0;
+    }
+    .registerarea ul li{
+        margin-bottom: 15px;
+    }
+    .registerarea ul li label{
+        display: inline-block;
+        width: 80px;
+        text-align: right;
+    }
+    .registerarea ul li input{
+        width: 240px;
+        height: 25px;
+    }
+    .agree{
+        padding-left: 100px;
+    } 
+    .agree input{
+        vertical-align: middle;
+    }
+    .agree  a{
+        color: rgb(66, 112, 238);
+    }
+    .btn{
+        width: 200px;
+        height: 30px;
+        background-color: rgb(247, 14, 14);
+        font-size: 14px;
+        color: rgb(255, 255, 255);
+        margin: 30px 0 0 100px;
+    }
+    .u1 {
+        display: inline-block;
+        font-size: 12px;
+        color: rgb(170, 165, 165);
+        padding-left: 20px;
+    }
+    .p1 {
+        display: inline-block;
+        font-size: 12px;
+        color: rgb(170, 165, 165);
+        padding-left: 20px;
+    }
+    .a1 {
+        display: inline-block;
+        font-size: 12px;
+        color: rgb(170, 165, 165);
+        padding-left: 20px;
+    }
+    .t1 {
+        display: inline-block;
+        font-size: 12px;
+        color: rgb(170, 165, 165);
+        padding-left: 20px;
+    }
+    .wrong{
+        color:red;
+    }
+    .right{
+        color:green;
+    }
+</style>
+<body>
+    <p style="font-size: 20px;margin:20px 450px -10px ;">创建账户</p>
+    <div class="registerarea">
+      <form id="forms" action="#" method="post"> <ul>
+        <li>
+            <label for="">用户名</label>
+            <input type="text" class="u2" >
+            <p class="u1" >长度4到16位（字母、数字、下划线、减号皆可）</p>
+        </li>
+        <li>
+         <label for="">密码</label>
+         <input type="password" class="p2" >
+         <p class="p1">请输入8位密码</p>
+     </li>
+     <li>
+         <label for="">确认密码</label>
+         <input type="password" class="a2">
+         <p class="a1">请再输入一次密码</p>
+     </li>
+     <li>
+         <label for="">手机号码</label>
+         <input type="text" class="t2">
+         <p class="t1">请输入11位数字</p>
+    </li>
+         <i class="agree"><input type="checkbox" name="" id="choose" onclick="check()">同意协议并注册<a href="#">《知晓用户协议》</a></i>
+     <li>
+         <input type="submit" value="提交注册" class="btn" disabled="disabled">
+     </li>
+    </ul></form>
+  </div>
+</form>>
+<script type="text/javascript">
+    var n1=false;
+    var n2=false;
+    var n3=false;
+    var n4=false;
+       var u1=document.querySelector('.u1');
+       var u2=document.querySelector('.u2');
+       u2.onblur=function nameCheck(){
+           if(this.value.match(/.+/)){
+              var str1=u2.value;
+               var reg=/[a-zA-Z0-9_-]{4,12}/;
+               if(!reg.test(str1)){
+               u1.className='u1 wrong';
+               u1.innerHTML='用户名不合法';
+              }else{
+                u1.className='u1 right';
+                u1.innerHTML='用户名合法';
+                var n1=true;
+           }
+        }else{
+            alert("必须填写姓名！");
+            return false;
+        }
+    }
+       var p2=document.querySelector('.p2');
+       var p1=document.querySelector('.p1');
+          p2.onblur=function pwdCheck(){
+            if(this.value.match(/.+/)){
+           var str3=p2.value;
+           var reg=/^[1]+[0-5]{2}+[6-9]{3}+[a-dA-D]{2}$/;
+          if(!reg.test(str3)){
+               p1.className='p1 wrong';
+               p1.innerHTML='密码不合法';
+           }else{
+            p1.className='p1 right';
+            p1.innerHTML='密码合法';
+            var n2=true;
+           }
+       }else{
+            alert("必须填写密码！");
+            return false;
+        }
+    }
+       var a1=document.querySelector('.a1');
+       var a2=document.querySelector('.a2');
+       a2.onblur=function pswsure(){
+        if(this.value.match(/.+/)){
+              if(a2.value===p2.value){ 
+                a1.className='a1 right';
+                a1.innerHTML='密码一致';
+                var n3=true;
+           } else{
+               a1.className='a1 wrong';
+               a1.innerHTML='密码不一致';
+           }
+        }
+        else{
+            alert("必须填写密码！");
+            return false;
+        }
+    }
+        var t1=document.querySelector('.t1');
+        var t2=document.querySelector('.t2');
+        t2.onblur=function telCheck(){
+        if(this.value.match(/.+/)){
+          var str2=t2.value;
+          var reg=/^[1]+[3-8]+[0-9]{9}/;
+           if(reg.test(str2)){
+            t1.className='t1 right';
+            t1.innerHTML='电话号码合法';
+           }else{
+            t1.className='t1 wrong';
+            t1.innerHTML='电话号码不合法';
+            var n4=true;
+           }
+       }
+       else{
+            alert("必须填写电话号码！");
+            return false;
+        }
+    }
+      function check() {
+          //'勾选协议按钮可用//否则不可用
+            var checkbox = document.getElementById( "checkbox");
+            if (checkbox.checked == true) {
+           document.getElementById ( "button").disabled = "";
+       } else {
+           document.getElementById( "button" ).disabled = "disabled";}
+}
+forms.onsubmit=function () {
+          var regs=!reg1.test(u2.value)||!reg2.test(p2.value)||!reg3.test(a2.value)||!reg4.test(t2.value);
+          var regs= n1==false||n2==falsel|n3==falsel|n4==false;
+          console.log(regs);
+        if( !regs == false){
+         alert('您填写的信息有误!');
+               return false;
+             }else if(choose.checked == false){
+            alert('请先点击确认已阅读按钮!');
+            return false;
+         }else {
+           alert('登记成功!');
+            window.open( "http: //www . baidu.com");
+            return true;
+         }
+}
+
+</script>
+</body>
+</html>
